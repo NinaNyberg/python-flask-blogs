@@ -21,4 +21,13 @@ def get_all_blogs():
         all_blogs = blogs_collection.find()
         return all_blogs
 
+def save_blog(form):
+    blogs_collection = db["blogs"]
+    title = form["title"]
+    snippet = form["snippet"]
+    body = form["body"]
+
+    new_blog = {"title": title, "snippet": snippet, "body": body}
+    blogs_collection.insert_one(new_blog)
+
 db = connect_to_mongo()
