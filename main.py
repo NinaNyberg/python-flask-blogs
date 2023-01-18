@@ -1,7 +1,9 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 from db import *
 
 app = Flask("flask-blogit")
+
+app.secret_key = b'_5#y'
 
 get_all_blogs()
 
@@ -21,6 +23,7 @@ def create():
         return render_template("create.html", title="CREATE BLOG")
     elif request.method == "POST":
         save_blog(request.form)
+        flash("BLOG CREATED!")
         return redirect("/")
 
 
