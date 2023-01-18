@@ -15,4 +15,12 @@ def home():
     blogs=all_blogs,
     title="HOME")
 
+@app.route("/blogs/create")
+def create():
+    return render_template("create.html")
+
+@app.route("/about")
+def info():
+    return render_template("about.html")
+
 app.run()
