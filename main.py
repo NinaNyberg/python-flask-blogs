@@ -33,6 +33,22 @@ def show_blog(id):
     return render_template("blog.html", blog=single_blog, title="BLOG")
 
 
+@app.route("/blogs/delete/<id>")
+def delete_blog(id):
+    delete_blog_by_id(id)
+    flash(f"Blog {id} deleted")
+    return redirect("/")
+
+@app.route("/blogs/update/<id>", methods=["POST", "GET"])
+def update_blog(id):
+    if request.method == "GET":
+        blog_by_id=get_blog_by_id(id)
+        return render_template("update.html", form = blog_by_id, id=id, title="UPDATE BLOG")
+    elif request.method == "POST":
+        update_blog_by_id(request.form, id)
+        flash("BLOG UPDATED!")
+        return redirect("/")
+
 
 @app.route("/about")
 def info():
