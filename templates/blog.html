@@ -1,0 +1,15 @@
+<html>
+    {% include ("./partials/head.html") %}
+    <body>
+        {% include ("./partials/navbar.html") %}
+
+        <div class="detail content">
+            <h2>{{blog.title}}</h2>
+                <div class="content">
+                    <p>{{blog.snippet}}</p>
+                    <p>{{blog.body}}</p>
+                </div>
+      
+        </div>
+    </body>
+</html>

@@ -27,6 +27,12 @@ def create():
         return redirect("/")
 
 
+@app.route("/blogs/<id>") # <string:id> <int:id>
+def show_blog(id):
+    single_blog = get_blog_by_id(id)
+    return render_template("blog.html", blog=single_blog, title="BLOG")
+
+
 
 @app.route("/about")
 def info():
